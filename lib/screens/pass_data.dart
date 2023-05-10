@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:practical6/first_page.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key, required this.args}) : super(key: key);
-  final String args;
-
+class PassData extends StatelessWidget {
+  const PassData({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String result = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Second Page"),
+        title: const Text("Pass data"),
         centerTitle: true,
         systemOverlayStyle:
-        const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+            const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
       ),
       body: SizedBox(
         width: double.infinity,
@@ -24,14 +22,13 @@ class SecondPage extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop("HEY THERE");
+                  Navigator.of(context).pop();
                 },
                 child: const Text("Pop"),
               ),
-              Text(args),
+              Text(result),
             ]),
       ),
     );
   }
 }
-
